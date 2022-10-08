@@ -69,8 +69,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - Do copy file .env in terminal git "cp .env.example .env".
 - Do key generate file .env in terminal git "php artisan key:generate".
 - Create database and set up to file .env [use backup file sql 'arsip-surat-sertikom.sql'].
-- And then run the project "php artisan serve".
+- And then run the project in terminal git "php artisan serve".
 
 ## Access
+- Open browser "localhost:8000".
 - User : admin@gmail.com
 - Password : admin
