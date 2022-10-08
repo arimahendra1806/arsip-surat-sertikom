@@ -20,7 +20,8 @@
 
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/vendor/datatables/css/jquery.dataTables_themeroller.css"/> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('vendor/dataTables') }}/datatables.min.css">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/img/apple-touch-icon.png">
@@ -85,13 +86,15 @@
 
     <script src="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/js/script.min.js"></script>
 
+    <script src="{{ asset('vendor/dataTables') }}/datatables.min.js"></script>
+
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script> --}}
 
     {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script> --}}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script type="text/javascript"
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> --}}
+    {{-- <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.11.3/b-2.1.1/b-html5-2.1.1/b-print-2.1.1/fc-4.0.1/r-2.2.9/sc-2.0.5/datatables.min.js">
-    </script>
+    </script> --}}
 
     @yield('js')
 
