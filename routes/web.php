@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function(){
         'destroy'
     ]]);
     Route::post('/arsip/delete/{id}', [ArsipController::class, 'destroy'])->name('arsip.destroy');
+    Route::get('/arsip/cari/{word}', [ArsipController::class, 'cari'])->name('arsip.cari');
 
     Route::resource('about', AboutController::class);
 

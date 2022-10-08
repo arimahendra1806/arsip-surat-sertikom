@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TheAdmin - Responsive Bootstrap 4 Admin, Dashboard &amp; WebApp Template">
     <meta name="keywords" content="dashboard, index, main">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Arsip Surat Online</title>
 
@@ -16,12 +17,14 @@
     <link href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/css/core.min.css" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/css/app.min.css" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/css/style.min.css" rel="stylesheet">
-    <!-- <link href="{{ asset('assets') }}/css/custom.css" rel="stylesheet"> -->
+    <link href="{{ asset('assets') }}/css/custom.css" rel="stylesheet">
 
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/> --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/vendor/datatables/css/jquery.dataTables_themeroller.css"/> --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" /> --}}
     <link rel="stylesheet" href="{{ asset('vendor/dataTables') }}/datatables.min.css">
+
+    <link rel="stylesheet" href="{{ asset('vendor/sweetalert2') }}/sweetalert2.min.css" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ asset('vendor/bootstrap-theadmin-master') }}/assets/img/apple-touch-icon.png">
@@ -88,6 +91,8 @@
 
     <script src="{{ asset('vendor/dataTables') }}/datatables.min.js"></script>
 
+    <script src="{{ asset('vendor/sweetalert2') }}/sweetalert2.min.js"></script>
+
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script> --}}
 
     {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script> --}}
@@ -97,6 +102,8 @@
     </script> --}}
 
     @yield('js')
+
+    @include('sweetalert::alert')
 
 </body>
 
