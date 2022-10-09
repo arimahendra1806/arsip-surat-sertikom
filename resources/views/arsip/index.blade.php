@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="mt-3 d-flex flex-row-reverse">
-                    <a href="{{ route('arsip.create') }}" class="btn btn-md btn-dark">Arsipkan Surat</a>
+                    <a href="{{ route('arsip.create') }}" class="btn btn-sm btn-dark">Arsipkan Surat</a>
                 </div>
                 <div class="hstack mt-3 form-type-round">
                     <p class="form-control-plaintext mr-4 no-wrap">Cari Surat :</p>
@@ -141,6 +141,8 @@
                     }
                 });
             });
+
+            
         });
     </script>
 @endsection

@@ -27,8 +27,9 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('arsip', ArsipController::class, ['except' => [
-        'destroy'
+        'destroy', 'arsip.update'
     ]]);
+    Route::post('/arsip/update/{id}', [ArsipController::class, 'update'])->name('arsip.update');
     Route::post('/arsip/delete/{id}', [ArsipController::class, 'destroy'])->name('arsip.destroy');
     Route::get('/arsip/cari/{word}', [ArsipController::class, 'cari'])->name('arsip.cari');
 

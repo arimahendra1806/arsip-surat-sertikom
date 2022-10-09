@@ -26,7 +26,7 @@ class ArsipController extends Controller
                 ->addColumn('action', function($model){
                     $btn = '<div class="hstack"><a class="btn btn-danger btn-sm text-white mr-1" id="btnDelete" data-id="'.$model->id.'">Hapus</a>
                     <a class="btn btn-warning btn-sm text-white mr-1" id="btnDownload" data-id="'.$model->id.'" href="file/'.$model->file.'" download>Unduh</a>
-                    <a class="btn btn-info btn-sm text-white" id="btnShow" data-id="'.$model->id.'">Lihat</a></div>';
+                    <a class="btn btn-info btn-sm text-white" id="btnShow" data-id="'.$model->id.'" href="arsip/'.$model->id.'">Lihat</a></div>';
                     return $btn;
                 })
                 ->rawColumns(['waktu','action'])
@@ -73,6 +73,8 @@ class ArsipController extends Controller
         $validator = Validator::make($request->all(), $rules, $messages, $attributes);
 
         if(!$validator->passes()){
+            Alert::error('Terjadi Kesalahan!');
+
             return redirect()->back()->withErrors($validator->errors()->toArray());
         } else {
             $data = new ArsipModel;
@@ -104,7 +106,9 @@ class ArsipController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = ArsipModel::find($id)->first();
+
+        return view('arsip.show', compact('data'));
     }
 
     /**
@@ -127,7 +131,75 @@ class ArsipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = ArsipModel::where('id', $id)->first();
+
+        if ($data->nomor == $request->nomor) {
+            if ($request->hasFile('fileSurat')) {
+                $rules = [
+                    'kategori' => ['required'],
+                    'judul' => ['required'],
+                    'fileSurat' => ['required','file','mimes:pdf'],
+                ];
+            } else {
+                $rules = [
+                    'kategori' => ['required'],
+                    'judul' => ['required'],
+                ];
+            }
+        } else {
+            if ($request->hasFile('fileSurat')) {
+                $rules = [
+                    'nomor' => ['required','unique:arsip,nomor'],
+                    'kategori' => ['required'],
+                    'judul' => ['required'],
+                    'fileSurat' => ['required','file','mimes:pdf'],
+                ];
+            } else {
+                $rules = [
+                    'nomor' => ['required','unique:arsip,nomor'],
+                    'kategori' => ['required'],
+                    'judul' => ['required'],
+                ];
+            }
+        }
+
+        $messages = [];
+
+        $attributes = [
+            'nomor' => 'Nomor Surat',
+            'kategori' => 'Kategori Surat',
+            'judul' => 'Judul Surat',
+            'fileSurat' => 'File Surat',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+        if(!$validator->passes()){
+            Alert::error('Terjadi Kesalahan!');
+
+            return redirect()->back()->withErrors($validator->errors()->toArray());
+        } else {
+            $data->nomor = $request->nomor;
+            $data->kategori = $request->kategori;
+            $data->judul = $request->judul;
+
+            if ($request->hasFile('fileSurat')){
+                $file = $request->file('fileSurat');
+                $filename = time()."_".$file->getClientOriginalName();
+                $file->move(public_path('file'), $filename);
+
+                $path = public_path() . '/file/' . $data->file;
+                File::delete($path);
+
+                $data->file = $filename;
+            }
+
+            $data->save();
+
+            Alert::success('Berhasil Memperbarui Data!');
+
+            return redirect('/arsip');
+        }
     }
 
     /**
