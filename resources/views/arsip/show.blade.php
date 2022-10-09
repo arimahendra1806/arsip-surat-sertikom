@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     <input type="text" class="form-control w-50 @error('nomor') is-invalid @enderror"
-                                        id="nomor" name="nomor" value="{{ $data->nomor }}">
+                                        id="nomor" name="nomor" value="{{ old('nomor', $data->nomor) }}">
 
                                     @error('nomor')
                                         <span class="invalid-feedback" role="alert">
@@ -44,14 +44,17 @@
                                 <div class="col-md-10">
                                     <select name="kategori" id="kategori"
                                         class="form-control w-75 @error('kategori') is-invalid @enderror">
-                                        <option value="Undangan" {{ $data->kategori == 'Undangan' ? 'selected' : '' }}>
+                                        <option value="Undangan"
+                                            {{ old('kategori', $data->kategori) == 'Undangan' ? 'selected' : '' }}>
                                             Undangan</option>
-                                        <option value="Pengumuman" {{ $data->kategori == 'Pengumuman' ? 'selected' : '' }}>
+                                        <option value="Pengumuman"
+                                            {{ old('kategori', $data->kategori) == 'Pengumuman' ? 'selected' : '' }}>
                                             Pengumuman</option>
-                                        <option value="Nota Dinas" {{ $data->kategori == 'Nota Dinas' ? 'selected' : '' }}>
+                                        <option value="Nota Dinas"
+                                            {{ old('kategori', $data->kategori) == 'Nota Dinas' ? 'selected' : '' }}>
                                             Nota Dinas</option>
                                         <option value="Pemberitahuan"
-                                            {{ $data->kategori == 'Pemberitahuan' ? 'selected' : '' }}>
+                                            {{ old('kategori', $data->kategori) == 'Pemberitahuan' ? 'selected' : '' }}>
                                             Pemberitahuan</option>
                                     </select>
 
@@ -68,7 +71,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     <input type="text" class="form-control @error('judul') is-invalid @enderror"
-                                        id="judul" name="judul" value="{{ $data->judul }}">
+                                        id="judul" name="judul" value="{{ old('judul', $data->judul) }}">
 
                                     @error('judul')
                                         <span class="invalid-feedback" role="alert">

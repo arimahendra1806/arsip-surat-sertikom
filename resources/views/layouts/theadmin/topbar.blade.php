@@ -27,7 +27,7 @@
                     <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../page-extra/user-lock-1.html"><i class="ti-lock"></i> Lock</a> --}}
-                    <a class="dropdown-item" href="{{ url('/logout') }}"><i class="ti-power-off"></i>Logout</a>
+                    <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i>Logout</a>
                 </div>
             </li>
 

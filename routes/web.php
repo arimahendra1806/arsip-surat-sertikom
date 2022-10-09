@@ -21,9 +21,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
 
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('arsip', ArsipController::class, ['except' => [

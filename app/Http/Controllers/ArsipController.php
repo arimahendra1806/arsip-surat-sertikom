@@ -75,7 +75,7 @@ class ArsipController extends Controller
         if(!$validator->passes()){
             Alert::error('Terjadi Kesalahan!');
 
-            return redirect()->back()->withErrors($validator->errors()->toArray());
+            return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
         } else {
             $data = new ArsipModel;
             $data->nomor = $request->nomor;
@@ -106,7 +106,7 @@ class ArsipController extends Controller
      */
     public function show($id)
     {
-        $data = ArsipModel::find($id)->first();
+        $data = ArsipModel::where('id', $id)->first();
 
         return view('arsip.show', compact('data'));
     }
@@ -177,7 +177,7 @@ class ArsipController extends Controller
         if(!$validator->passes()){
             Alert::error('Terjadi Kesalahan!');
 
-            return redirect()->back()->withErrors($validator->errors()->toArray());
+            return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
         } else {
             $data->nomor = $request->nomor;
             $data->kategori = $request->kategori;

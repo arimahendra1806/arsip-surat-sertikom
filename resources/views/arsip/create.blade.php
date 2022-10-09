@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-10">
                             <input type="text" class="form-control w-50 @error('nomor') is-invalid @enderror"
-                                id="nomor" name="nomor">
+                                id="nomor" name="nomor" value="{{ old('nomor') }}">
 
                             @error('nomor')
                                 <span class="invalid-feedback" role="alert">
@@ -41,10 +41,18 @@
                         <div class="col-md-10">
                             <select name="kategori" id="kategori"
                                 class="form-control w-75 @error('kategori') is-invalid @enderror">
-                                <option value="Undangan" selected>Undangan</option>
-                                <option value="Pengumuman">Pengumuman</option>
-                                <option value="Nota Dinas">Nota Dinas</option>
-                                <option value="Pemberitahuan">Pemberitahuan</option>
+                                <option value="Undangan" {{ old('kategori') == 'Undangan' ? 'selected' : '' }}>
+                                    Undangan
+                                </option>
+                                <option value="Pengumuman" {{ old('kategori') == 'Pengumuman' ? 'selected' : '' }}>
+                                    Pengumuman
+                                </option>
+                                <option value="Nota Dinas" {{ old('kategori') == 'Nota Dinas' ? 'selected' : '' }}>
+                                    Nota Dinas
+                                </option>
+                                <option value="Pemberitahuan" {{ old('kategori') == 'Pemberitahuan' ? 'selected' : '' }}>
+                                    Pemberitahuan
+                                </option>
                             </select>
 
                             @error('kategori')
@@ -60,7 +68,7 @@
                         </div>
                         <div class="col-md-10">
                             <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul"
-                                name="judul">
+                                name="judul" value="{{ old('judul') }}">
 
                             @error('judul')
                                 <span class="invalid-feedback" role="alert">
